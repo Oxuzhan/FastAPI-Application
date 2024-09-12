@@ -1,0 +1,229 @@
+{
+    "clustered_companies": [
+        {
+            "name": "Siemens",
+            "name_length": 7,
+            "description_length": 30,
+            "partners_count": 218,
+            "avg_partner_name_length": 10.422018348623853,
+            "themes_count": 53,
+            "cluster": 2
+        },
+        {
+            "name": "Daimler",
+            "name_length": 7,
+            "description_length": 64,
+            "partners_count": 148,
+            "avg_partner_name_length": 10.216216216216216,
+            "themes_count": 33,
+            "cluster": 4
+        },
+        {
+            "name": "Bosch",
+            "name_length": 5,
+            "description_length": 64,
+            "partners_count": 138,
+            "avg_partner_name_length": 10.369565217391305,
+            "themes_count": 53,
+            "cluster": 4
+        },
+        {
+            "name": "BMW",
+            "name_length": 3,
+            "description_length": 73,
+            "partners_count": 114,
+            "avg_partner_name_length": 10.114035087719298,
+            "themes_count": 44,
+            "cluster": 4
+        },
+        {
+            "name": "SAP",
+            "name_length": 3,
+            "description_length": 126,
+            "partners_count": 112,
+            "avg_partner_name_length": 10.080357142857142,
+            "themes_count": 35,
+            "cluster": 1
+        },
+        {
+            "name": "Volkswagen",
+            "name_length": 10,
+            "description_length": 38,
+            "partners_count": 111,
+            "avg_partner_name_length": 9.882882882882884,
+            "themes_count": 39,
+            "cluster": 4
+        },
+        {
+            "name": "Allianz",
+            "name_length": 7,
+            "description_length": 107,
+            "partners_count": 94,
+            "avg_partner_name_length": 10.882978723404255,
+            "themes_count": 22,
+            "cluster": 1
+        },
+        {
+            "name": "Deutsche Telekom",
+            "name_length": 16,
+            "description_length": 40,
+            "partners_count": 77,
+            "avg_partner_name_length": 9.857142857142858,
+            "themes_count": 23,
+            "cluster": 0
+        },
+        {
+            "name": "Airbus",
+            "name_length": 6,
+            "description_length": 117,
+            "partners_count": 76,
+            "avg_partner_name_length": 10.355263157894736,
+            "themes_count": 33,
+            "cluster": 1
+        },
+        {
+            "name": "Vodafone",
+            "name_length": 8,
+            "description_length": 96,
+            "partners_count": 76,
+            "avg_partner_name_length": 9.605263157894736,
+            "themes_count": 43,
+            "cluster": 1
+        },
+        {
+            "name": "Porsche",
+            "name_length": 7,
+            "description_length": 41,
+            "partners_count": 62,
+            "avg_partner_name_length": 10.806451612903226,
+            "themes_count": 33,
+            "cluster": 0
+        },
+        {
+            "name": "Unilever",
+            "name_length": 8,
+            "description_length": 123,
+            "partners_count": 62,
+            "avg_partner_name_length": 9.225806451612904,
+            "themes_count": 43,
+            "cluster": 3
+        },
+        {
+            "name": "Microsoft",
+            "name_length": 9,
+            "description_length": 137,
+            "partners_count": 60,
+            "avg_partner_name_length": 8.933333333333334,
+            "themes_count": 35,
+            "cluster": 3
+        },
+        {
+            "name": "Lufthansa",
+            "name_length": 9,
+            "description_length": 158,
+            "partners_count": 56,
+            "avg_partner_name_length": 9.785714285714286,
+            "themes_count": 13,
+            "cluster": 3
+        },
+        {
+            "name": "Continental",
+            "name_length": 11,
+            "description_length": 110,
+            "partners_count": 55,
+            "avg_partner_name_length": 9.236363636363636,
+            "themes_count": 32,
+            "cluster": 3
+        },
+        {
+            "name": "Bayer",
+            "name_length": 5,
+            "description_length": 66,
+            "partners_count": 54,
+            "avg_partner_name_length": 11.703703703703704,
+            "themes_count": 28,
+            "cluster": 0
+        },
+        {
+            "name": "Samsung Electronics",
+            "name_length": 19,
+            "description_length": 130,
+            "partners_count": 54,
+            "avg_partner_name_length": 10.166666666666666,
+            "themes_count": 35,
+            "cluster": 3
+        },
+        {
+            "name": "Audi",
+            "name_length": 4,
+            "description_length": 23,
+            "partners_count": 53,
+            "avg_partner_name_length": 10.754716981132075,
+            "themes_count": 33,
+            "cluster": 0
+        },
+        {
+            "name": "Orange",
+            "name_length": 6,
+            "description_length": 60,
+            "partners_count": 48,
+            "avg_partner_name_length": 10.1875,
+            "themes_count": 18,
+            "cluster": 0
+        },
+        {
+            "name": "Philips",
+            "name_length": 7,
+            "description_length": 76,
+            "partners_count": 48,
+            "avg_partner_name_length": 10.125,
+            "themes_count": 36,
+            "cluster": 0
+        },
+        {
+            "name": "AXA Group",
+            "name_length": 9,
+            "description_length": 131,
+            "partners_count": 47,
+            "avg_partner_name_length": 10.063829787234043,
+            "themes_count": 20,
+            "cluster": 3
+        },
+        {
+            "name": "Accenture",
+            "name_length": 9,
+            "description_length": 75,
+            "partners_count": 47,
+            "avg_partner_name_length": 9.46808510638298,
+            "themes_count": 25,
+            "cluster": 0
+        },
+        {
+            "name": "BASF",
+            "name_length": 4,
+            "description_length": 107,
+            "partners_count": 45,
+            "avg_partner_name_length": 10.511111111111111,
+            "themes_count": 26,
+            "cluster": 3
+        },
+        {
+            "name": "Amazon",
+            "name_length": 6,
+            "description_length": 77,
+            "partners_count": 40,
+            "avg_partner_name_length": 9.175,
+            "themes_count": 35,
+            "cluster": 0
+        },
+        {
+            "name": "Google",
+            "name_length": 6,
+            "description_length": 97,
+            "partners_count": 40,
+            "avg_partner_name_length": 8.875,
+            "themes_count": 29,
+            "cluster": 3
+        }
+    ]
+}
