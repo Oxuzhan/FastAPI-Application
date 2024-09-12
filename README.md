@@ -1,4 +1,4 @@
-# Web-Scraping-Application
+# Web Scraping Application
 ## Requirements
 Make sure you have the following installed on your system:
 
