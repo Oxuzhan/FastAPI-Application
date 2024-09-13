@@ -13,7 +13,7 @@ Make sure you have the following installed on your system:
 - You can check total companies with test.ipynb ( Not necessary )
 
 ## Second Part: API connection with port and clustering
-- Make sure you import all necessary libraries such as
+- Make sure make the connections 
 ```
 pip install celery
 celery -A celery1 worker --loglevel=info
