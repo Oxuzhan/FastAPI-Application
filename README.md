@@ -9,7 +9,7 @@ Make sure you have the following installed on your system:
 - Make sure you import all necessary libraries using pip in the terminal 
 - Make sure you have enviroment
 - Run datas.ipynb file
-- Take all corporate data.json successfully
+- Take all datas data.json successfully
 - You can check total companies with test.ipynb ( Not necessary )
 
 ## Second Part: API connection with port and clustering
