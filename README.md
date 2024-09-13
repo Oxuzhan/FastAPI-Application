@@ -42,12 +42,12 @@ uvicorn main2:app --host 0.0.0.0 --port 8000
 ```
 - Make sure you have connection with redis and celery
 ## Part 4: FastAPI APP
--Open Google and import
+-Open Google and try to make HTTP connections
 <details>
 <summary> Endpoints in app <summary> 
 
 ```
--  (http://0.0.0.0:8000/docs#/)
+http://0.0.0.0:8000/docs#/
 ```
 -Other Endpoints
 ```
