@@ -6,12 +6,12 @@ import seaborn as sns
 import numpy as np
 
 def analyze_data():
-    # JSON dosyasının doğru yolları
+    
     json_path = '/Users/oguzhanatmaca/Desktop/entrapeer/task3/all_corporate_data.json'
-    new_json_path = '/Users/oguzhanatmaca/Desktop/entrapeer/task3/cluster.json'  # Yeni JSON dosyası
-    cluster_results_path = '/Users/oguzhanatmaca/Desktop/entrapeer/task3/json2.json'  # Cluster sonuçları için yeni JSON dosyası
+    new_json_path = '/Users/oguzhanatmaca/Desktop/entrapeer/task3/cluster.json'  # making JSON Cluster
+    cluster_results_path = '/Users/oguzhanatmaca/Desktop/entrapeer/task3/json2.json'  #making JSON just cluster results
 
-    # Verilerin yüklenmesi
+    
     try:
         with open(json_path, 'r') as f:
             data = json.load(f)
@@ -31,7 +31,7 @@ def analyze_data():
         print("Error: Failed to decode JSON. Please check the file format.")
         return []
 
-    # Özelliklerin çıkartılması
+    
     features = []
     company_details = []
 
@@ -39,23 +39,23 @@ def analyze_data():
         try:
             company = company_data.get('data', {}).get('corporate', {})
             
-            # Gerekli özellikleri sayısal hali
+            # Partners_count
             name_length = len(company.get('name', ''))
             description_length = len(company.get('description', ''))
             partners_count = company.get('startup_partners_count', 0)
             
-            # Ortak isim uzunluğunu 
+            # Partner_name_length
             partners = company.get('startup_partners', [])
             avg_partner_name_length = sum(len(partner.get('company_name', '')) for partner in partners) / (len(partners) or 1)
             
-            # Tema sayısını 
+            # Themes 
             themes = company.get('startup_themes', [])
             themes_count = len(themes)
 
-            # Özellikleri listeye 
+             
             features.append([name_length, description_length, partners_count, avg_partner_name_length, themes_count])
             
-            # Şirket detayları için verileri 
+            # Combined all features
             company_details.append({
                 "name": company.get('name', 'Unknown'),
                 "name_length": name_length,
@@ -68,34 +68,34 @@ def analyze_data():
         except Exception as e:
             print(f"Error processing data: {e}")
 
-    # KMeans algoritması ile kümeleme
+    # KMeans 
     if features:
-        features = [list(map(float, f)) for f in features]  # Her öğeyi float yap
-        kmeans = KMeans(n_clusters=5)  # Küme sayısını ihtiyaca göre ayarlayın
+        features = [list(map(float, f)) for f in features]  # This one is important; making string to float
+        kmeans = KMeans(n_clusters=5)  # Cluster number or maybe adding random state to be stabilize
         kmeans.fit(features)
         clusters = kmeans.labels_
 
-        # Şirket detaylarına küme bilgisi
+        
         cluster_results = []
         for idx, company in enumerate(company_details):
-            company['cluster'] = int(clusters[idx])  # JSON uyumluluğu için kümeyi int'e çevirme
+            company['cluster'] = int(clusters[idx])  # For Json data transfering Integer(INT)
             print(f"Şirket: {company['name']}, İsim uzunluğu = {company['name_length']}, "
                   f"Açıklama uzunluğu = {company['description_length']}, Ortak sayısı = {company['partners_count']}, "
                   f"Ortalama ortak isim uzunluğu = {company['avg_partner_name_length']:.2f}, "
                   f"Tema sayısı = {company['themes_count']}, Küme = {company['cluster']}")
             
-            # Cluster sonuçlarına ekleme
+            # Cluster results
             cluster_results.append({
                 "company_name": company['name'],
                 "cluster": company['cluster']
             })
 
-        # Şirket detayları ve küme bilgilerini içeren yapı
+        # Company informationss
         detailed_results = {
             "clustered_companies": company_details
         }
 
-        # Verileri yeni JSON dosyasına kaydetme
+        
         try:
             with open(new_json_path, 'w') as f:
                 json.dump(detailed_results, f, indent=4)
@@ -103,7 +103,7 @@ def analyze_data():
         except Exception as e:
             print(f"Error writing to new JSON file: {e}")
 
-        # Cluster sonuçlarını kaydetme
+        
         try:
             with open(cluster_results_path, 'w') as f:
                 json.dump({"clusters_results": cluster_results}, f, indent=4)
@@ -111,22 +111,22 @@ def analyze_data():
         except Exception as e:
             print(f"Error writing to cluster results JSON file: {e}")
 
-        # Kümeleme sonuçlarını görselleştirme
+        
         plot_clusters(features, clusters)
 
-        # Google Gemini API ile her küme için açıklama ve başlık oluşturma
+        # Google Gemini API 
         try:
-            GOOGLE_API_KEY = 'AIzaSyAuUZrftqbyxtH6cRa4xHPiQLgDLiOnNUM'  # Google API anahtarınızı buraya ekleyin
+            GOOGLE_API_KEY = 'AIzaSyAuUZrftqbyxtH6cRa4xHPiQLgDLiOnNUM'  # Google API KEY
             genai.configure(api_key=GOOGLE_API_KEY)
             model = genai.GenerativeModel('gemini-pro')
 
-            # Her bir kümeyi tanımla ve analiz için Google Gemini'ye gönder
-            clusters_info = {i: [] for i in range(5)}  # Küme başına boş listeler
+            # For try to make description
+            clusters_info = {i: [] for i in range(5)}  
 
             for company in company_details:
                 clusters_info[company['cluster']].append(company)
 
-            # Her küme için açıklama ve başlık oluşturma
+            
             for cluster_id, companies in clusters_info.items():
                 prompt = f"Given the following companies in cluster {cluster_id}, provide a brief description and a title for this cluster:\n\n{json.dumps(companies)}"
                 response = model.generate_content(prompt)
@@ -143,16 +143,16 @@ def analyze_data():
         return []
 
 def plot_clusters(features, clusters):
-    # Özellikleri ve kümeleri numpy array'e dönüştürme
+    
     features = np.array(features)
     clusters = np.array(clusters)
 
-    # PCA ile boyut indirgeme yaparak 2D'ye indirgeme
+    
     from sklearn.decomposition import PCA
     pca = PCA(n_components=2)
     reduced_features = pca.fit_transform(features)
 
-    # Scatter plot ile görselleştirme
+    
     plt.figure(figsize=(10, 6))
     sns.scatterplot(x=reduced_features[:, 0], y=reduced_features[:, 1], hue=clusters, palette="viridis", s=100)
     plt.title("Company Clusters Visualization")
@@ -162,6 +162,6 @@ def plot_clusters(features, clusters):
     plt.grid(True)
     plt.show()
 
-# Fonksiyonu çalıştırma
+
 if __name__ == "__main__":
     analyze_data()
