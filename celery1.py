@@ -1,15 +1,16 @@
 from celery import Celery
-
-# Celery uygulamasını oluşturma
+# celery -A celery1 worker --loglevel=info
+# Celery application + Redis
 app = Celery(
     'tasks',
-    broker='redis://localhost:6380/0',
-    backend='redis://localhost:6380/0'
+    broker='redis://localhost:6380/0',#import duty
+    backend='redis://localhost:6380/0'#gather duty
 )
+
 
 @app.task
 def fetch_data(company_id):
-    # Burada API çağrısını yaparak verileri kaydetme
+    
     import requests
     import json
 
@@ -57,7 +58,7 @@ def fetch_data(company_id):
 
     if response.status_code == 200:
         data = response.json()
-        # Veriyi kaydetmek için dosya işlemleri
+        
         with open(f'data_{company_id}.json', 'w') as f:
             json.dump(data, f, indent=4)
         print(f"{company_id} için veri başarıyla çekildi ve kaydedildi.")
@@ -65,8 +66,10 @@ def fetch_data(company_id):
         print(f"API isteği başarısız oldu: {company_id}, Durum Kodu: {response.status_code}")
         print("Yanıt Mesajı:", response.text)
 
-# Yeni run_analysis görevini ekle
+
 @app.task
 def print_company_name(company_name: str):
     print(f"Company Name: {company_name}")
     return f"Company Name: {company_name}"
+
+
