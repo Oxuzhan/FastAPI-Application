@@ -12,7 +12,7 @@ json_path = '/Users/oguzhanatmaca/Desktop/entrapeer/task3/all_corporate_data.jso
 cluster_json_path = '/Users/oguzhanatmaca/Desktop/entrapeer/task3/cluster.json'  
 # http://ai.google.dev/api/all-methods#generative-language-api
 # Google Gemini API 
-gemini_api_key = os.getenv("AIzaSyAuUZrftqbyxtH6cRa4xHPiQLgDLiOnNUM") 
+gemini_api_key = os.getenv("GEMINI_KEY") 
 
 app = FastAPI()
 def load_json_data(filepath):
