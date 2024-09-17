@@ -45,6 +45,7 @@ uvicorn main2:app --host 0.0.0.0 --port 8000
 - Open Google and try to make HTTP connections
 <details>
 <summary> Endpoints in app <summary> 
+  
 ```
 http://0.0.0.0:8000/docs#/
 ```
