@@ -50,6 +50,7 @@ uvicorn main2:app --host 0.0.0.0 --port 8000
 http://0.0.0.0:8000/docs#/
 ```
 - Other Endpoints
+  
 ```
 http://0.0.0.0:8000/assign-cluster-names/
 http://127.0.0.1:8000/fetch-data-by-name/
